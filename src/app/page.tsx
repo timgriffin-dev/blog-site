@@ -101,13 +101,6 @@ export default function HomePage() {
           </div>
         )}
 
-        {filteredPosts.length === 0 && !searchTerm && (
-          <div className="text-center py-12">
-            <p className="text-stone-500 dark:text-stone-400 text-lg">No posts yet. Create your first post!</p>
-            <p className="text-stone-400 dark:text-stone-500 mt-2">Add a .md file to the /posts folder</p>
-          </div>
-        )}
-
         <div className="space-y-8">
           {filteredPosts.map((post) => (
             <article
