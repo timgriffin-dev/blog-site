@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tim's Dev Blog",
-  description: "Software engineering insights, personal projects, and micro-SaaS journey",
+  title: "Tim Griffin",
+  description: "Software engineering, privacy, security, and emerging tech",
 };
 
 export default function RootLayout({

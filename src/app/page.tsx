@@ -58,10 +58,10 @@ export default function HomePage() {
       <header className="bg-white dark:bg-stone-800 shadow-sm border-b border-stone-200 dark:border-stone-700">
         <div className="max-w-4xl mx-auto px-6 py-8">
           <h1 className="text-4xl font-bold text-stone-800 dark:text-stone-100 mb-2">
-            Tim&apos;s Dev Blog
+            Tim Griffin
           </h1>
           <p className="text-xl text-stone-600 dark:text-stone-300">
-            Software engineering insights, personal projects, and micro-SaaS journey
+            Software engineering, privacy, security, and emerging tech
           </p>
         </div>
       </header>
@@ -151,7 +151,7 @@ export default function HomePage() {
       <footer className="bg-white dark:bg-stone-800 border-t border-stone-200 dark:border-stone-700 mt-20">
         <div className="max-w-4xl mx-auto px-6 py-8">
           <p className="text-stone-500 dark:text-stone-400 text-center">
-            © 2025 Tim&apos;s Dev Blog
+            © 2025 Tim Griffin
           </p>
         </div>
       </footer>
