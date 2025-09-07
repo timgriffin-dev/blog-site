@@ -25,7 +25,7 @@ This approach seemed reasonable - the ID token already contained user informatio
 
 **Frontend complexity**: Every API call would need modification to send ID tokens instead of the default access tokens we are already sending.
 
-We eventually figured out the custom access token configuration and added the beta-tester claim there instead. This kept the proper token separation and avoided any frontend changes.
+ We eventually figured out the custom access token configuration by creating a custom resource audienced to our APIs, attaching a scope to that resource, and requesting that scope during the login redirect. This added the beta-tester claim to our access tokens with the proper audience, keeping proper token separation and avoiding any frontend changes.
   
 ### Token Types
 
@@ -158,7 +158,7 @@ These patterns solve common implementation challenges: zero-downtime token migra
 Browser storage like `localStorage` and `sessionStorage` is vulnerable to XSS attacks that can steal tokens. Store access tokens in `httpOnly` cookies instead, which prevent JavaScript access to tokens. For SPAs, consider the Backend-for-Frontend (BFF) pattern where tokens never reach the browser. Advanced BFF implementations like Phantom Tokens use opaque tokens in the browser while API gateways exchange them for JWTs with full claims. Split Token patterns send only JWT signatures to clients while gateways reconstruct complete tokens from cached components.
 
 ##### Client-Bound Tokens (DPoP)
-Standard bearer tokens work for anyone who possesses them. DPoP binds access tokens to a public key during issuance by the authorization server. Clients must prove possession of the corresponding private key when using the access token at the resource server. The client creates a DPoP proof JWT that demonstrates possession of the private key and includes a hash of the access token. Stolen tokens become useless without the matching private key.
+Standard bearer tokens work for anyone who possesses them. DPoP (Demonstrating Proof-of-Possession) binds access tokens to a public key during issuance by the authorization server. Clients must prove possession of the corresponding private key when using the access token at the resource server. The client creates a DPoP proof JWT that demonstrates possession of the private key and includes a hash of the access token. Stolen tokens become useless without the matching private key.
 
 ##### Certificate-Bound Access Tokens (mTLS)
 Mutual TLS binds access tokens to client certificates used during authentication. The authorization server includes the certificate thumbprint in the access token after successful mutual TLS client authentication. When accessing APIs, clients must establish a mutual TLS session using the same certificate. The API compares the certificate thumbprint from the TLS session with the thumbprint in the token. Stolen tokens are useless without the corresponding private key and certificate.
