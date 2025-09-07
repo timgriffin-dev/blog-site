@@ -25,7 +25,7 @@ This approach seemed reasonable - the ID token already contained user informatio
 
 **Frontend complexity**: Every API call would need modification to send ID tokens instead of the default access tokens we are already sending.
 
- We eventually figured out the custom access token configuration by creating a custom resource audienced to our APIs, attaching a scope to that resource, and requesting that scope during the login redirect. This added the beta-tester claim to our access tokens with the proper audience, keeping proper token separation and avoiding any frontend changes.
+We eventually figured out the custom access token configuration by creating a custom resource audienced to our APIs, attaching a scope to that resource, and requesting that scope during the login redirect, allowing us to add the beta-tester claim to our access token with the proper audience, while keeping proper token separation and avoiding any frontend changes.
   
 ### Token Types
 
